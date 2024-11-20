@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙥𝙧𝙚𝙙𝙞𝙘𝙩 𝘾𝙡𝙤𝙨𝙚 𝙥𝙧𝙞𝙘𝙚</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Arimo:wght@400;700&family=Hind:wght@300&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arimo', sans-serif;
+            background: linear-gradient(to bottom right, #d4af37, #b8860b);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to top */
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .welcome-header {
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            color: #fff;
+            background-color: #b8860b;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px; /* Keep space below the header */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 90%;
+        }
+        .image-box, .form-container, .description-box {
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .image-box {
+            background: url('https://hmarkets.com/wp-media/2023/03/Gold-bars-on-stock-market-newspaper-cc-1536x845.jpg') no-repeat center center/cover;
+            height: 300px;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+        }
+        .form-container h1 {
+            font-family: 'Pacifico', cursive;
+            margin-bottom: 20px;
+            color: #b8860b;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-container input {
+            padding: 10px;
+            border: 1px solid #b8860b;
+            border-radius: 5px;
+            font-size: 1em;
+            background: #fefae0;
+            color: #333;
+        }
+        .form-container button {
+            padding: 10px;
+            background: #b8860b;
+            border: none;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .form-container button:hover {
+            background: #d4af37;
+        }
+        .description-box {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            text-align: left;
+            color: #555;
+        }
+        .description-box h2 {
+            color: #b8860b;
+            margin-bottom: 15px;
+        }
+        .description-box p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-box, .form-container, .description-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Header -->
+    <div class="welcome-header">
+        ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴄʟᴏꜱᴇ ᴘʀɪᴄᴇ ᴘʀᴇᴅɪᴄᴛɪᴏɴ ᴍᴏᴅᴇʟ
+    </div>
+
+    <div class="container">
+        <div class="image-box"></div>
+        <div class="form-container">
+            <h1>𝙥𝙧𝙚𝙙𝙞𝙘𝙩 𝘾𝙡𝙤𝙨𝙚 𝙥𝙧𝙞𝙘𝙚</h1>
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type="text" name="Open" placeholder="Enter Open Value" required>
+                <input type="text" name="High" placeholder="Enter High Value" required>
+                <input type="text" name="Low" placeholder="Enter Low Value" required>
+                <button type="submit">Predict</button>
+            </form>
+            <div class="output">
+                {% if prediction_text %}
+                    <p>𝙥𝙧𝙚𝙙𝙞𝙘𝙩𝙚𝙙 𝙘𝙡𝙤𝙨𝙚 𝙥𝙧𝙞𝙘𝙚: {{ prediction_text }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="description-box">
+            <h2>About the Model</h2>
+            <p>
+                This machine learning model is designed to provide highly accurate predictions 
+                based on input features. Trained on extensive data, it achieves excellent performance 
+                metrics, ensuring reliable outputs for complex scenarios. 
+            </p>
+            <p>
+                Its accuracy and scalability make it one of the best tools for Close price predictions.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
